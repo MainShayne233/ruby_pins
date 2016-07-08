@@ -28,7 +28,7 @@ module RubyPins
 
     def off
       @state = :off
-      unexport
+      unexport if exported?
     end
 
     def turn_on
@@ -57,6 +57,10 @@ module RubyPins
 
     def unexport
       `echo #{self.pin} > /sys/class/gpio/unexport`
+    end
+
+    def exported?
+      File.directory? "/sys/class/gpio/gpio#{self.pin}"
     end
 
   end
