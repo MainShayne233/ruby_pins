@@ -15,7 +15,7 @@ module RubyPins
     end
 
     def pin= pin
-      unexport
+      unexport if self.pin
       @pin = pin
     end
 
