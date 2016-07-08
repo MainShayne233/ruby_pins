@@ -1,34 +1,44 @@
 # RubyPins
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby_pins`. To experiment with that code, run `bin/console` for an interactive prompt.
+RubyPins! The simple way to control your Raspberry Pi's GPIO pins, with Ruby!
 
-TODO: Delete this and the text above, and describe your gem
+Tested operating systems: Raspian
 
-## Installation
+To install, from a terminal, run:
 
-Add this line to your application's Gemfile:
+$ gem install ruby_pins
+
+If you are using a Gemfile, such as with a Ruby on Rails application add:
 
 ```ruby
 gem 'ruby_pins'
 ```
 
-And then execute:
+to your Gemfile, and run
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install ruby_pins
+$ bundle
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a new pin:
 
-## Development
+```ruby
+pin = RubyPins::Pin.new pin: 17, name: 'My Cool Pin!', state: :off
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Turn the pin on:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+pin.on
+```
+
+Turn the pin off:
+
+```ruby
+pin.off
+```
+
+Now rewire your whole house to be interfaced from your Ruby app!
 
 ## Contributing
 
