@@ -47,6 +47,17 @@ pin.off
 
 Now rewire your whole house to be interfaced from your Ruby app!
 
+## Note about pin numbers
+
+ruby_pins expects the pin number to be the pin's GPIO number.
+For example, when looking at the falling pinout chart, if you wanted to
+set your pin number to the 11th pin, or GPIO17, you would pass in
+```ruby
+pin: 17
+```
+Pinout chart:
+https://www.element14.com/community/servlet/JiveServlet/previewBody/73950-102-10-339300/pi3_gpio.png
+
 ## Installing Ruby (and Rails)
 
 This is the guide I use to install Ruby and Ruby on Rails on my Pis:
@@ -62,4 +73,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
