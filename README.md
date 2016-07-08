@@ -6,7 +6,9 @@ Tested operating systems: Raspian
 
 To install, from a terminal, run:
 
-$ gem install ruby_pins
+```bash
+gem install ruby_pins
+```
 
 If you are using a Gemfile, such as with a Ruby on Rails application add:
 
@@ -16,7 +18,9 @@ gem 'ruby_pins'
 
 to your Gemfile, and run
 
-$ bundle
+```bash
+bundle
+```
 
 ## Usage
 
