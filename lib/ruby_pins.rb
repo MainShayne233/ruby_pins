@@ -31,6 +31,10 @@ module RubyPins
       unexport
     end
 
+    def turn_on
+      set_value 1
+    end
+
     def set_out
       set_direction 'out'
     end
