@@ -40,6 +40,13 @@ pin.off
 
 Now rewire your whole house to be interfaced from your Ruby app!
 
+## Installing Ruby (and Rails)
+
+This is the guide I use to install Ruby and Ruby on Rails on my Pis:
+
+http://elinux.org/RPi_Ruby_on_Rails
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ruby_pins. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="af9d2d2b-e7ff-45d4-a722-87c2ff838412" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ruby_pins.gemspec" afterPath="$PROJECT_DIR$/ruby_pins.gemspec" />
     </list>
     <ignored path="ruby_pins.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -350,12 +349,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1467942076243</updated>
-      <workItem from="1467942077351" duration="2522000" />
+      <workItem from="1467942077351" duration="2583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2522000" />
+    <option name="totallyTimeSpent" value="2583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1199" y="649" width="1200" height="1241" extended-state="0" />
