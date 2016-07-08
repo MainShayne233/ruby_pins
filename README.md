@@ -29,6 +29,7 @@ Create a new pin:
 ```ruby
 # All arguments are optional, including the pin number!
 # Not much can be done without a pin number though!
+# The default state is off
 pin = RubyPins::Pin.new pin: 17, name: 'My Cool Pin!', state: :off
 ```
 
