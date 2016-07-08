@@ -50,7 +50,7 @@ Now rewire your whole house to be interfaced from your Ruby app!
 ## Note about pin numbers
 
 ruby_pins expects the pin number to be the pin's GPIO number.
-For example, when looking at the falling pinout chart, if you wanted to
+For example, when looking at the following pinout chart, if you wanted to
 set your pin number to the 11th pin, or GPIO17, you would pass in
 ```ruby
 pin: 17
