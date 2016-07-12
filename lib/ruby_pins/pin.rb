@@ -60,11 +60,11 @@ module RubyPins
     end
 
     def export
-      run "echo #{self.pin} > /sys/class/gpio/export"
+      "echo #{self.pin} > /sys/class/gpio/export"
     end
 
     def unexport
-      run "echo #{self.pin} > /sys/class/gpio/unexport"
+      "echo #{self.pin} > /sys/class/gpio/unexport"
     end
 
     def exported?
