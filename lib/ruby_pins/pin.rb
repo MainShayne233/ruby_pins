@@ -29,14 +29,17 @@ module RubyPins
     end
 
     def run *commands
-      script = commands.join '; '
+      std_out = ''
       if host == :local
-        %x(#{script})
+        commands.each {|cmd| std_out << %x(#{cmd})}
       else
-        Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
-          ssh.exec! script
+        commands.each do |cmd|
+          Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
+            std_out << ssh.exec! script
+          end
         end
       end
+      std_out
     end
 
     def turn_on
