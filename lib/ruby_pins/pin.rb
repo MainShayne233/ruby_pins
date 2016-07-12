@@ -4,7 +4,6 @@ module RubyPins
     attr_accessor :pin, :name, :state, :pinset, :host
 
     def initialize args
-      puts 'init!'
       args.each {|k, v| self.send "#{k}=", v}
       self.state= :off unless self.state
       self.host ||= :local
@@ -20,7 +19,6 @@ module RubyPins
     end
 
     def on
-      byebug
       @state = :on
       run export, set_out, turn_on
     end
@@ -31,13 +29,13 @@ module RubyPins
     end
 
     def run *commands
-      script = commands.join " && "
-      puts script
       if host == :local
-        %x(#{script})
+        commands.each {|cmd| %x(cmd)}
       else
-        Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
-          ssh.exec! script
+        commands.each do |cmd|
+          Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
+            ssh.exec! cmd
+          end
         end
       end
     end
