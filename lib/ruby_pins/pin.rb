@@ -6,7 +6,7 @@ module RubyPins
     def initialize args
       args.each {|k, v| self.send "#{k}=", v}
       self.state= :off unless self.state
-      self.host ||= 'local'
+      self.host ||= :local
     end
 
     def state= state
@@ -30,7 +30,7 @@ module RubyPins
 
     def run *commands
       script = commands.join " && "
-      if host == 'local'
+      if host == :local
         %x(#{script})
       else
         Net::SSH.start(self.host.address, self.host.user, self.host.password) do |ssh|
@@ -68,7 +68,8 @@ module RubyPins
     end
 
     def exported?
-      run("/sys/class/gpio/").include? "gpio#{self.pin}"
+      run("/sys/class/gpio/gpio").include? "#{self.pin}"
+      File.directory?
     end
 
   end
