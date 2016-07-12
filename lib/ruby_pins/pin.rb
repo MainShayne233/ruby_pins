@@ -35,7 +35,7 @@ module RubyPins
       else
         commands.each do |cmd|
           Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
-            std_out << ssh.exec! script
+            std_out << ssh.exec! cmd
           end
         end
       end
