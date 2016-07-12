@@ -6,7 +6,6 @@ module RubyPins
     def initialize args
       args.each {|k, v| self.send "#{k}=", v}
       self.state= :off unless self.state
-      self.host ||= :local
     end
 
     def state= state
@@ -30,14 +29,14 @@ module RubyPins
 
     def run *commands
       std_out = ''
-      if self.host == :local
-        commands.each {|cmd| std_out << %x(#{cmd})}
-      else
+      if self.host
         commands.each do |cmd|
           Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
             std_out << ssh.exec!(cmd)
           end
         end
+      else
+        commands.each {|cmd| std_out << %x(#{cmd})}
       end
       std_out
     end
