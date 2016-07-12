@@ -30,7 +30,7 @@ module RubyPins
 
     def run *commands
       std_out = ''
-      if host == :local
+      if self.host == :local
         commands.each {|cmd| std_out << %x(#{cmd})}
       else
         commands.each do |cmd|
