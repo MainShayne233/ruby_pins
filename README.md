@@ -22,15 +22,48 @@ to your Gemfile, and run
 bundle
 ```
 
-## Usage
+# Usage
+
+## Basic pin
 
 Create a new pin:
 
 ```ruby
-# All arguments are optional, including the pin number!
-# Not much can be done without a pin number though!
+# Pins accept a pin #, a state (:on, :off), a name, and a host.
+# If you running the code on the PI itself, the pin just needs a pin number!
 # The default state is off
-pin = RubyPins::Pin.new pin: 17, name: 'My Cool Pin!', state: :off
+pin = RubyPins::Pin.new pin: 17
+```
+
+Turn the pin on:
+
+```ruby
+pin.on
+```
+
+Turn the pin off:
+
+```ruby
+pin.off
+```
+
+## Remote pin
+
+Say what? You wanna control a Pi on your network, but run the code from a different computer?
+ruby_pins has you covered!
+
+Create a host:
+
+```ruby
+pi_host = RubyPins::Host.new address: <ip_address>,
+                             user: <unix_user(probably 'pi')>,
+                             password: <unix password>
+```
+
+Add this host to the pin from before
+
+```ruby
+pin.host = pi_host
 ```
 
 Turn the pin on:
