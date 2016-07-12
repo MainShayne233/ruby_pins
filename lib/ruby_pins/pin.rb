@@ -20,14 +20,23 @@ module RubyPins
 
     def on
       @state = :on
-      export
-      set_out
-      turn_on
+      run export, set_out, turn_on
     end
 
     def off
       @state = :off
-      unexport if exported?
+      run(unexport) if exported?
+    end
+
+    def run *commands
+      script = commands.join " && "
+      if host == 'local'
+        %x(#{script})
+      else
+        Net::SSH.start(self.host.address, self.host.user, self.host.password) do |ssh|
+          ssh.exec! script
+        end
+      end
     end
 
     def turn_on
@@ -43,23 +52,23 @@ module RubyPins
     end
 
     def set_direction dir
-      `echo #{dir} > /sys/class/gpio/gpio#{self.pin}/direction`
+      "echo #{dir} > /sys/class/gpio/gpio#{self.pin}/direction"
     end
 
     def set_value val
-      `echo #{val} > /sys/class/gpio/gpio#{self.pin}/value`
+      "echo #{val} > /sys/class/gpio/gpio#{self.pin}/value"
     end
 
     def export
-      `echo #{self.pin} > /sys/class/gpio/export`
+      "echo #{self.pin} > /sys/class/gpio/export"
     end
 
     def unexport
-      `echo #{self.pin} > /sys/class/gpio/unexport`
+      "echo #{self.pin} > /sys/class/gpio/unexport"
     end
 
     def exported?
-      File.directory? "/sys/class/gpio/gpio#{self.pin}"
+      run("/sys/class/gpio/").include? "gpio#{self.pin}"
     end
 
   end
