@@ -60,7 +60,7 @@ pi_host = RubyPins::Host.new address: <ip_address>,
                              password: <unix password>
 ```
 
-Add this host to the pin from before
+Add this host to your pin
 
 ```ruby
 pin.host = pi_host
