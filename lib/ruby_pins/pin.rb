@@ -30,10 +30,8 @@ module RubyPins
     def run *commands
       std_out = ''
       if self.host
-        commands.each do |cmd|
-          Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
-            std_out << ssh.exec!(cmd)
-          end
+        Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
+          commands.each {|cmd| std_out << ssh.exec!(cmd)}
         end
       else
         commands.each {|cmd| std_out << %x(#{cmd})}
