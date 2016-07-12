@@ -29,6 +29,7 @@ module RubyPins
     end
 
     def run *commands
+      byebug
       if host == :local
         commands.each {|cmd| %x(cmd)}
       else
