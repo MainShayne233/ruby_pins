@@ -69,7 +69,6 @@ module RubyPins
 
     def exported?
       run("/sys/class/gpio/gpio").include? "#{self.pin}"
-      File.directory?
     end
 
   end
