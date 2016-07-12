@@ -4,6 +4,7 @@ module RubyPins
     attr_accessor :pin, :name, :state, :pinset, :host
 
     def initialize args
+      puts 'init!'
       args.each {|k, v| self.send "#{k}=", v}
       self.state= :off unless self.state
       self.host ||= :local
@@ -19,6 +20,7 @@ module RubyPins
     end
 
     def on
+      byebug
       @state = :on
       run export, set_out, turn_on
     end
@@ -30,6 +32,7 @@ module RubyPins
 
     def run *commands
       script = commands.join " && "
+      puts script
       if host == :local
         %x(#{script})
       else
