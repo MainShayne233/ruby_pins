@@ -29,14 +29,12 @@ module RubyPins
     end
 
     def run *commands
-      byebug
+      script = commands.join '; '
       if host == :local
-        commands.each {|cmd| %x(cmd)}
+        %x(#{script})
       else
-        commands.each do |cmd|
-          Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
-            ssh.exec! cmd
-          end
+        Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
+          ssh.exec! script
         end
       end
     end
