@@ -33,7 +33,7 @@ module RubyPins
       if host == :local
         %x(#{script})
       else
-        Net::SSH.start(self.host.address, self.host.user, self.host.password) do |ssh|
+        Net::SSH.start(self.host.address, self.host.user, password: self.host.password) do |ssh|
           ssh.exec! script
         end
       end
